@@ -1,0 +1,17 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.typing-box {
+    text-align: left;
+    position: absolute;
+    z-index: 2;
+    width: 40vw;
+    height: 3rem;
+    font-size: calc(10px + 2vmin);
+    background-color: #31353f;
+    border-radius: 1rem;
+    color: inherit;
+    font-family: inherit;
+}
