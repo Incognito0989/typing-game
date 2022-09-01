@@ -1,0 +1,6 @@
+.test-wrapper {
+    display: flex;
+    gap: 1rem;
+    width: 60vw;
+    overflow: hidden;
+}
