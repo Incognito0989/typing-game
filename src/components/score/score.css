@@ -1,0 +1,10 @@
+.score-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding-bottom: 10rem;
+}
+
+.score-wrapper > * {
+    margin: 0;
+}

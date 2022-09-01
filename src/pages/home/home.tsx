@@ -1,6 +1,7 @@
 import words from 'random-words';
 import React, { ChangeEvent, Component } from 'react';
 import ExpectedText from '../../components/expected-text/expected-text';
+import Score from '../../components/score/score';
 import TypingBox from '../../components/typing-box/typing-box';
 import './home.css';
 
@@ -33,10 +34,11 @@ class Home extends Component {
     return (
       <div className="App">
         <header className="App-header">
-            <div className='typing-wrapper'>         
-                <ExpectedText text={this.state.testArr}></ExpectedText>
-                <TypingBox state={this.state}/>
-            </div>
+          <Score wpm={ this.state.wpm } score={this.state.correctCount}></Score>
+          <div className='typing-wrapper'>
+            <ExpectedText text={this.state.testArr}></ExpectedText>
+            <TypingBox/>
+          </div>
         </header>
       </div>
     )
