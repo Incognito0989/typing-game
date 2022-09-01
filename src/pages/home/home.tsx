@@ -1,3 +1,4 @@
+import words from 'random-words';
 import React, { ChangeEvent, Component } from 'react';
 import ExpectedText from '../../components/expected-text/expected-text';
 import TypingBox from '../../components/typing-box/typing-box';
@@ -13,10 +14,12 @@ interface State {
   wpm: number
 }
 
+var randomWords = require('random-words');
+
 class Home extends Component {
   state: State = {
-      testArr: 'a single distinct meaningful element of speech or writing, used with others (or sometimes alone) to form a sentence and typically shown with a space on either side when written or printed',
       words: [],
+      testArr: '',
       enteredText: '',
       correctCount: 0,
       startTime: null,
@@ -25,14 +28,15 @@ class Home extends Component {
   }
 
   render() {
+    this.state.words = randomWords(300)
+    this.state.testArr = this.state.words.toString().split(',').join(' ')
     return (
       <div className="App">
         <header className="App-header">
             <div className='typing-wrapper'>         
-                <ExpectedText text='a single distinct meaningful element of speech or writing, used with others (or sometimes alone) to form a sentence and typically shown with a space on either side when written or printed'></ExpectedText>
+                <ExpectedText text={this.state.testArr}></ExpectedText>
                 <TypingBox state={this.state}/>
             </div>
-
         </header>
       </div>
     )
