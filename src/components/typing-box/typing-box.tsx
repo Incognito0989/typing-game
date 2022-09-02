@@ -15,7 +15,7 @@ class TypingBox extends Component<Props> {
   render() {
     return (
       <div className='wrapper'>
-        <input onChange={ this.props.onChange } id='box' className='typing-box'>
+        <input onChange={ this.props.onChange } autoCorrect='off' autoCapitalize='off' autoComplete='off' id='box' className='typing-box'>
         </input>
       </div>
     );
