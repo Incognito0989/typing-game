@@ -2,12 +2,20 @@ import './typing-box.css';
 import { ChangeEvent, Component } from 'react';
 import { type } from '@testing-library/user-event/dist/type';
 
-class TypingBox extends Component {
+type Props = {
+  onChange: any
+}
+
+class TypingBox extends Component<Props> {
+
+  constructor(props: Props) {
+    super(props)
+  }
 
   render() {
     return (
       <div className='wrapper'>
-        <input id='box' className='typing-box'>
+        <input onChange={ this.props.onChange } id='box' className='typing-box'>
         </input>
       </div>
     );
