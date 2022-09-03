@@ -1,5 +1,7 @@
+import { keyboardKey } from '@testing-library/user-event';
+import { keyboard } from '@testing-library/user-event/dist/keyboard';
 import words from 'random-words';
-import React, { ChangeEvent, Component } from 'react';
+import React, { ChangeEvent, Component, Key } from 'react';
 import ExpectedText from '../../components/expected-text/expected-text';
 import Score from '../../components/score/score';
 import TypingBox from '../../components/typing-box/typing-box';
@@ -29,9 +31,14 @@ class Home extends Component {
   }
 
   checkChar = (e: ChangeEvent<HTMLInputElement>): void => {
+    const elements = document.getElementsByClassName('word_inner')
+
+    if(this.state.enteredText.length > e.currentTarget.value.length) {
+      elements[this.state.enteredText.length - 1].setAttribute('style', 'color: white')
+    }
+
     this.state.enteredText = e.currentTarget.value
     const text = this.state.enteredText.split(' ').join('')
-    const elements = document.getElementsByClassName('word_inner')
     console.log(text)
     console.log(text.length - 1)
     if(text.charAt(text.length - 1) === this.state.test.split(' ').join('').charAt(text.length - 1)) {
