@@ -35,7 +35,7 @@ class ExpectedText extends Component<TextProps> {
     let newContent = ''
 
     words.forEach(function(word) {
-      let line = `<span class='word'>${addWrappers(word, 'span', 'word_inner')}</span>`
+      let line = `<span class='word'>${addWrappers(word, 'span', 'word_inner')}</span><span class='incorrect-overflow'></span><span class='space'></span>`
       newContent = newContent.concat(line.toString())
     })
 

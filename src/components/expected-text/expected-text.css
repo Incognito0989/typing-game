@@ -1,6 +1,13 @@
 .test-wrapper {
     display: flex;
-    gap: 1rem;
     width: 60vw;
     overflow: hidden;
+}
+
+.space {
+    min-width: 1rem;
+}
+
+.incorrect-overflow {
+    color: red;
 }
