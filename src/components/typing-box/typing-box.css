@@ -1,19 +1,18 @@
 .wrapper {
     display: flex;
     justify-content: center;
+    padding-bottom: 2rem;
 }
 
 .typing-box {
-    text-align: left;
     position: absolute;
-    width: 40vw;
-    height: 3rem;
+    width: 70vw;
+    height: 5rem;
     font-size: calc(10px + 2vmin);
-    background-color: #31353f;
     border-radius: 1rem;
-    color: inherit;
-    font-family: inherit;
+    color: transparent;
     display: inline-block;
     white-space: nowrap;
     overflow: hidden;
+    background-color: transparent;
 }
