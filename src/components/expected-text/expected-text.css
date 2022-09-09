@@ -1,10 +1,5 @@
 .test-wrapper {
     display: flex;
-    width: 60vw;
-    overflow: hidden;
-    position: fixed;
-    top: 50vh;
-    left: 20vw;
 }
 
 .space {

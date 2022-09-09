@@ -58,12 +58,14 @@ class Home extends Component {
     if(char === ' ') {
       this.state.currWord++
       this.enteredWords.push('')
+      this.setMargin('space', true)
     } else {
       if(this.enteredWords.length <= this.state.currWord) {
         this.enteredWords.push('')
       }
       this.enteredWords[this.state.currWord] = this.enteredWords[this.state.currWord].concat(char)
       this.checkCharacter(this.enteredWords[this.state.currWord], e)
+      this.setMargin('word_inner', true)
     }
   }
 
@@ -71,11 +73,13 @@ class Home extends Component {
     if(this.state.enteredText.charCodeAt(this.state.enteredText.length - 1) === 32) {
       //go back to prev word
       this.state.currWord = this.state.currWord - 1
+      this.setMargin('space', false)
     } else {
       const expected = this.state.words[this.state.currWord]
       if(expected.length >= this.enteredWords[this.state.currWord].length) {
         this.currCharSpan--
         elements[this.currCharSpan].setAttribute('style', 'color: white')
+        this.setMargin('word_inner', false)
       } else {
         const overflow = document.getElementsByClassName('incorrect-overflow')[this.state.currWord]
         if(overflow.textContent) {
@@ -101,6 +105,19 @@ class Home extends Component {
     }
 
   }
+  margin = 0
+
+  setMargin(className: string, forward: boolean) {
+    const element = document.getElementsByClassName('test-wrapper')[0]
+    const letterW = document.getElementsByClassName(className)[0].getBoundingClientRect().width
+    if(this.state.enteredText.length > document.getElementsByClassName('typing-box')[0].getBoundingClientRect().width / (2 * letterW)) {
+      console.log(letterW)
+      console.log(this.margin)
+      forward? this.margin -= letterW : this.margin += letterW
+      console.log(this.margin)
+      element.setAttribute('style', 'margin-left: ' + (this.margin) + 'px')
+    }
+  }
 
   render() {
     this.state.words = randomWords(300)
@@ -110,8 +127,8 @@ class Home extends Component {
         <header className="App-header">
           <div className='typing-wrapper'>
             <ExpectedText text={ this.state.test }></ExpectedText>
-            <TypingBox onChange={ this.checkWord }/>
           </div>
+          <TypingBox onChange={ this.checkWord }/>
         </header>
       </div>
     )

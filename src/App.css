@@ -24,6 +24,10 @@
   color: white;
 }
 
+body, html {
+  font-family: monospace;
+}
+
 .App-link {
   color: #61dafb;
 }
