@@ -1,11 +1,12 @@
 import { keyboardKey } from '@testing-library/user-event';
 import { keyboard } from '@testing-library/user-event/dist/keyboard';
 import words from 'random-words';
-import React, { ChangeEvent, Component, Key } from 'react';
+import React, { ChangeEvent, Component, Key, useState, useRef, useEffect } from 'react';
 import ExpectedText from '../../components/expected-text/expected-text';
 import Score from '../../components/score/score';
 import TypingBox from '../../components/typing-box/typing-box';
 import './home.css';
+import Timer from '../../components/timer/timer';
 
 interface State {
   test: string
@@ -122,9 +123,11 @@ class Home extends Component {
   render() {
     this.state.words = randomWords(300)
     this.state.test= this.state.words.toString().split(',').join(' ')
+
     return (
       <div className="App">
         <header className="App-header">
+          <Timer time={60}></Timer>
           <div className='typing-wrapper'>
             <ExpectedText text={ this.state.test }></ExpectedText>
           </div>
